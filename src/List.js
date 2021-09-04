@@ -31,7 +31,7 @@ function List(props) {
 	}
 	
 	return <div className="List">
-		<div className="filter">
+		<div className={"filter filter-"+filter.length}>
         	<div className="list">
           		{filter.map((f) => <div className="element">
               		<button className="filter-element" name={f}>{f}</button>
@@ -42,10 +42,16 @@ function List(props) {
       	</div>
 		{data.map((d) => 
 		{
-			var arr=[];
+			var arr=[d.role,d.level];
 			d.languages.forEach((l) => {arr.push(l)})
-			if(arr.length<3 && d.tools.length>0)
+			if(arr.length<5 && d.tools.length>0)
 				arr.push(d.tools[0]);
+			var i=0;
+			for(;i<filter.length;i++)
+			{
+				if(!arr.includes(filter[i]))
+					return <div />
+			}
 			return <div className={"list-item "+d.featured}>
 				<div className="logo">
 					<img className="logo-image" src={d.logo} alt="logo" />
@@ -65,8 +71,6 @@ function List(props) {
 				</div>
 				<hr />
 				<div className="skills">
-					<button className="skill" name={d.role} onClick={Filter}>{d.role}</button>
-					<button className="skill" name={d.level} onClick={Filter}>{d.level}</button>
 					{arr.map((s) => <button className="skill" name={s} onClick={Filter}>{s}</button>)}
 				</div>
 			</div>}

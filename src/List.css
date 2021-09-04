@@ -37,6 +37,10 @@
     border-radius: 5px;
 }
 
+.filter.filter-0 {
+	visibility: hidden;
+}
+
 .list {
     width: 95%;
     display: flex;
