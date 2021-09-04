@@ -228,6 +228,10 @@ hr {
 	.details {
 		width: 90%;
 	}
+
+	.timepos {
+		font-size: 0.75rem;
+	}
 	
 	.skills {
 		width: 50%;
